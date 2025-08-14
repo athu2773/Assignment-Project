@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Grid, Typography, Button } from '@mui/material';
 import { useLogs } from '../hooks/useLogs';
-import LogsTable from '../components/Logs/LogsTable';
-import LogsFilter from '../components/Logs/LogsFilter';
+import LogsTable from '../components/LogsFilter';
+import LogsFilter from '../components/LogsTable';
 import TimeRangeSelector from '../components/Dashboard/TimeRangeSelector';
 import Loading from '../components/common/Loading';
 import Error from '../components/common/Error';
