@@ -8,26 +8,21 @@ export const useApi = (endpoint) => {
 
   const fetchData = useCallback(async (options = {}) => {
     const abortController = new AbortController();
-    
+    setLoading(true);
+    setError(null);
+
     try {
-      setLoading(true);
-      setError(null);
-      
       const response = await api.get(endpoint, {
         ...options,
         signal: abortController.signal,
       });
-      
-      // Use requestAnimationFrame to prevent layout thrashing
-      requestAnimationFrame(() => {
-        setData(response.data);
-        setLoading(false);
-      });
+      setData(response.data);
     } catch (err) {
       if (!abortController.signal.aborted) {
         setError(err.response?.data?.error || err.message);
-        setLoading(false);
       }
+    } finally {
+      setLoading(false);
     }
 
     return () => abortController.abort();

@@ -9,7 +9,7 @@ import Error from '../components/common/Error';
 
 const DashboardPage = () => {
   const [timeRange, setTimeRange] = useState('24h');
-  const { data: summary, loading, error, fetchData } = useApi('/api/summary');
+  const { data: summary, loading, error, fetchData } = useApi('/summary');
   
   useEffect(() => {
     fetchData({ params: { range: timeRange } });
